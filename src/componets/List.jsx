@@ -4,15 +4,29 @@ import Present from "./Present.jsx";
 
 const List = () => {
     useEffect(() => {
-        axios.get('https://wish-list-back.onrender.com/presents')
-            .then(res => setList(res.data))
+        getList()
     }, [])
     const [list, setList] = useState(
         [])
+
+    const handleAddReserve = async (id) => {
+        console.log('123', id)
+        try {
+            await axios.put('https://wish-list-back.onrender.com/presents', {id})
+            await getList()
+        } catch (e) {
+            console.error(e)
+        }
+    }
+
+    const getList = async () => {
+        axios.get('https://wish-list-back.onrender.com/presents')
+            .then(res => setList(res.data))
+    }
     return (
         <div className='max-w-[1230px] mx-auto pb-10'>
             <div className='min-h-screen px-3'>
-                <div className='flex items-center lg:px-10 pt-[50px] lg:pt-[100px] mb-4 flex-col-reverse lg:flex-col'>
+                <div className='flex items-center lg:px-10 pt-[50px] lg:pt-[100px] mb-4 flex-col-reverse lg:flex-row'>
                     <h2 className='text-4xl leading-[1] lg:(text-[54px] leading-[64px]) font-bold text-neutral-800'>
                         Дорогие друзья, приглашаю вас на свой День Рождения c 14 на 15 января.
                     </h2>
@@ -34,7 +48,7 @@ const List = () => {
             <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
                 {
                     list.length && list.map(el =>
-                        <Present key={el.id} item={el}/>
+                        <Present key={el.id} item={el} handleAddReserve={handleAddReserve}/>
                     )
                 }
             </div>
