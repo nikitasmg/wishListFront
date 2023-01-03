@@ -1,8 +1,5 @@
 import List from "./componets/List.jsx";
-import {
-    createBrowserRouter,
-    RouterProvider,
-} from "react-router-dom";
+import {createBrowserRouter,RouterProvider} from "react-router-dom";
 import AdminPanel from "./componets/AdminPanel.jsx";
 
 const router = createBrowserRouter([

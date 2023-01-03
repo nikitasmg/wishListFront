@@ -12,7 +12,7 @@ const List = () => {
     const handleAddReserve = async (id) => {
         console.log('123', id)
         try {
-            await axios.put('https://wish-list-back.onrender.com/presents', {id})
+            await axios.put('https://wish-list-back.onrender.com/presents', {id, isReserved: true})
             await getList()
         } catch (e) {
             console.error(e)
@@ -45,6 +45,8 @@ const List = () => {
 
 
             <h2 className='text-2xl lg: text-4xl text-center mb-5'>А вот и сам Wish List</h2>
+            <span className='block mb-5 text-center text-red-600'>Важно! После нажатия кнопки "Беру себе", отменить выбор смогу только я (хи-хи)</span>
+
             <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
                 {
                     list.length && list.map(el =>
