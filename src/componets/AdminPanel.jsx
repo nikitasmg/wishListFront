@@ -51,7 +51,7 @@ const AdminPanel = () => {
         <div className='p-10'>
             <h2 className='text-2xl mb-5'>Добавить новый подарок</h2>
             <form className='mb-10' onSubmit={(e) => handleSubmit(e)}>
-                <div className='grid grid-cols-2 gap-4 mb-10'>
+                <div className='grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 mb-10'>
 
                     <div className='flex flex-col gap-1'>
                         <span>Имя</span>
