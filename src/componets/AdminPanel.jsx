@@ -22,7 +22,10 @@ const AdminPanel = () => {
             return
         }
         await addItem(form)
-        console.log(form)
+        setName('')
+        setUrl('')
+        setImageUrl('')
+        setDescription('')
     }
 
     const handleCancelReserve = async (e) => {
@@ -33,6 +36,7 @@ const AdminPanel = () => {
         }
         try {
            await axios.put('https://wish-list-back.onrender.com/presents',{id: +itemId, isReserved: false} )
+            setItemId('')
         } catch (e) {
             console.error(e)
         }

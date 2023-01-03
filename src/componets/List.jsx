@@ -3,18 +3,36 @@ import axios from "axios";
 import Present from "./Present.jsx";
 
 const List = () => {
+    const [loading, setLoading] = useState(true)
+    const [list, setList] = useState([])
+    const [notification, setNotification] = useState({
+        error: false,
+        message: ''
+    })
+
+    const doNotification = (message, error) => {
+        setNotification({error, message})
+        setTimeout(() => {
+            setNotification({
+                error: false,
+                message: ''
+            })
+        }, 5000)
+    }
+
     useEffect(() => {
         getList()
+            .finally(() => setLoading(false))
     }, [])
-    const [list, setList] = useState(
-        [])
+
 
     const handleAddReserve = async (id) => {
-        console.log('123', id)
         try {
-            await axios.put('https://wish-list-back.onrender.com/presents', {id, isReserved: true})
-            await getList()
+            const resp = await axios.put('https://wish-list-back.onrender.com/presents', {id, isReserved: true})
+            setList(resp.data)
+            doNotification('Успешно добавлено в бронь')
         } catch (e) {
+            doNotification(e?.response.data.message, true)
             console.error(e)
         }
     }
@@ -24,7 +42,7 @@ const List = () => {
             .then(res => setList(res.data))
     }
     return (
-        <div className='max-w-[1230px] mx-auto pb-10'>
+        <div className='max-w-[1230px] mx-auto pb-10 relative'>
             <div className='min-h-screen px-3'>
                 <div className='flex items-center lg:px-10 pt-[50px] lg:pt-[100px] mb-4 flex-col-reverse lg:flex-row'>
                     <h2 className='text-4xl leading-[1] lg:(text-[54px] leading-[64px]) font-bold text-neutral-800'>
@@ -44,16 +62,28 @@ const List = () => {
             </div>
 
 
-            <h2 className='text-2xl lg: text-4xl text-center mb-5'>А вот и сам Wish List</h2>
-            <span className='block mb-5 text-center text-red-600'>Важно! После нажатия кнопки "Беру себе", отменить выбор смогу только я (хи-хи)</span>
+            <h2 className='text-2xl lg: text-4xl text-center mb-5'>А вот и сам Wish List {loading}</h2>
+            <span className='block mb-5 text-center text-red-600'>Важно! После нажатия кнопки "Беру себе", отменить выбор сможет только администратор. Если возникнут вопросы пишите <a
+                className='underline text-blue-500' href="https://vk.com/id12961608" target='_blank'>Евгению Смагину</a></span>
+            {
+                loading
+                    ? <h2 className='text-2xl text-center animate-pulse'> Подождите идет загрзука...</h2>
+                    : <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
+                        {
+                            list.length && list.map(el =>
+                                <Present key={el.id} item={el} handleAddReserve={handleAddReserve} loading={loading}/>
+                            )
+                        }
+                    </div>
+            }
+            {
+                notification.message &&
+                <div
+                    className={`fixed top-5 right-5 lg:(top-10 right-10) w-[200px] py-3 text-white px-5 bg-green-300 rounded-md shadow-sm ${notification.error && 'bg-red-400'}`}>
+                    {notification.message}
+                </div>
+            }
 
-            <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
-                {
-                    list.length && list.map(el =>
-                        <Present key={el.id} item={el} handleAddReserve={handleAddReserve}/>
-                    )
-                }
-            </div>
         </div>
 
     );
