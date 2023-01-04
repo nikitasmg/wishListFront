@@ -35,7 +35,7 @@ const AdminPanel = () => {
             return
         }
         try {
-           await axios.put('https://wish-list-back.onrender.com/presents',{id: +itemId, isReserved: false} )
+           await axios.put(`https://wishlistbacknest.onrender.com/gifts/${itemId}`,{ isReserved: false} )
             setItemId('')
         } catch (e) {
             console.error(e)
@@ -44,12 +44,20 @@ const AdminPanel = () => {
 
     const addItem = async (data) => {
         try {
-            await axios.post('https://wish-list-back.onrender.com/presents', data)
+            await axios.post('https://wishlistbacknest.onrender.com/gifts', data)
         }
         catch (e) {
             console.error(e)
             setError(e?.message)
         }
+    }
+
+    const deleteGift = async () => {
+      try {
+        await axios.delete(`https://wishlistbacknest.onrender.com/gifts/${itemId}`)
+      } catch (e) {
+          console.error(e)
+      }
     }
     return (
         <div className='p-10'>
@@ -102,10 +110,10 @@ const AdminPanel = () => {
             <h2>Убрать из брони</h2>
             <form onSubmit={e => handleCancelReserve(e)}>
                 <input placeholder='ID' type="text" value={itemId} onChange={e => setItemId(e.target.value)}/>
-                <button className='py-2 px-10 mx-auto border-2 border-black ml-4'>Submit</button>
+                <button className='py-2 px-10 mx-auto border-2 border-black ml-4'>Убрать из брони</button>
             </form>
+            <button onClick={deleteGift} className='py-2 px-10 mx-auto border-2 border-black ml-4'>Удалить</button>
             <span className='text-2xl text-red-600'>{error}</span>
-
         </div>
     );
 };

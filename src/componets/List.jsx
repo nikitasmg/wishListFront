@@ -28,8 +28,8 @@ const List = () => {
 
     const handleAddReserve = async (id) => {
         try {
-            const resp = await axios.put('https://wish-list-back.onrender.com/presents', {id, isReserved: true})
-            setList(resp.data)
+            await axios.put(`https://wishlistbacknest.onrender.com/gifts/${id}`, { isReserved: true})
+            await getList()
             doNotification('Успешно добавлено в бронь')
         } catch (e) {
             doNotification(e?.response.data.message, true)
@@ -38,8 +38,8 @@ const List = () => {
     }
 
     const getList = async () => {
-        axios.get('https://wish-list-back.onrender.com/presents')
-            .then(res => setList(res.data))
+        axios.get('https://wishlistbacknest.onrender.com/gifts')
+            .then(({data}) => setList(data) )
     }
     return (
         <div className='max-w-[1230px] mx-auto pb-10 relative'>
@@ -70,9 +70,9 @@ const List = () => {
                     ? <h2 className='text-2xl text-center animate-pulse'> Подождите идет загрзука...</h2>
                     : <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
                         {
-                            list.length && list.map(el =>
+                            list.length ? list.map(el =>
                                 <Present key={el.id} item={el} handleAddReserve={handleAddReserve} loading={loading}/>
-                            )
+                            ) : <h2>Список пуст</h2>
                         }
                     </div>
             }
