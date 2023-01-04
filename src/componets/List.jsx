@@ -46,7 +46,7 @@ const List = () => {
             <div className='min-h-screen px-3'>
                 <div className='flex items-center lg:px-10 pt-[50px] lg:pt-[100px] mb-4 flex-col-reverse lg:flex-row'>
                     <h2 className='text-4xl leading-[1] lg:(text-[54px] leading-[64px]) font-bold text-neutral-800'>
-                        Дорогие друзья, приглашаю вас на свой День Рождения c 14 на 15 января.
+                        Дорогие друзья, приглашаю вас на свой День Рождения 15 января.
                     </h2>
                     <video autoPlay muted loop className="max-w-full lg:max-w-[540px] mb-10 lg:mb-0">
                         <source src="/giftsVideo.mp4" type="video/mp4"/>
@@ -55,8 +55,8 @@ const List = () => {
                 </div>
                 <div className='flex gap-4 lg:gap-1 flex-col mb-10 text-2xl text-neutral-800 '>
                     <span className='underline underline-offset-auto cursor-pointer'>
-                        Место проведения - <br className='lg:hidden'/>(Уточним в скором времени)</span>
-                    <span>Время проведения - <br className='lg:hidden'/> (Уточним в скором времени)</span>
+                        Место проведения - <br className='lg:hidden'/><a target='_blank' href="https://2gis.ru/tyumen/geo/1830223003896305?m=65.523082%2C57.102848%2F16">г. Тюмень, ул. Уездная, 144</a></span>
+                    <span>Время проведения - <br className='lg:hidden'/> 16:00</span>
                 </div>
                 <span className='block text-center mt-auto p-2 text-neutral-600 w-[200px] rounded-xl mx-auto'>Листай вниз <span>↓</span></span>
             </div>
