@@ -3,7 +3,7 @@ import axios from "axios";
 import Present from "./Present.jsx";
 
 const List = () => {
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(false)
     const [list, setList] = useState([])
     const [notification, setNotification] = useState({
         error: false,
@@ -22,14 +22,22 @@ const List = () => {
 
     useEffect(() => {
         getList()
-            .finally(() => setLoading(false))
     }, [])
 
 
     const handleAddReserve = async (id) => {
         try {
             await axios.put(`https://wishlistbacknest.onrender.com/gifts/${id}`, { isReserved: true})
-            await getList()
+            const newList = list.map(el => {
+                if (el.id === id) {
+                    return {
+                        ...el,
+                        isReserved: true
+                    }
+                }
+                return el
+            })
+            setList(newList)
             doNotification('Успешно добавлено в бронь')
         } catch (e) {
             doNotification(e?.response.data.message, true)
@@ -38,8 +46,10 @@ const List = () => {
     }
 
     const getList = async () => {
+        setLoading(true)
         axios.get('https://wishlistbacknest.onrender.com/gifts')
             .then(({data}) => setList(data) )
+            .finally(() => setLoading(false))
     }
     return (
         <div className='max-w-[1230px] mx-auto pb-10 relative'>
@@ -71,7 +81,7 @@ const List = () => {
                     : <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
                         {
                             list.length ? list.map(el =>
-                                <Present key={el.id} item={el} handleAddReserve={handleAddReserve} loading={loading}/>
+                                <Present key={el.id} item={el} handleAddReserve={handleAddReserve} loading={loading} />
                             ) : <h2>Список пуст</h2>
                         }
                     </div>
