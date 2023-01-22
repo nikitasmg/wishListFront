@@ -82,7 +82,7 @@ const List = () => {
                 className='underline text-blue-500 hover:animate-pulse' href="https://vk.com/smg72" target='_blank'>Никите Смагину</a></span>
             {
                 loading
-                    ? <h2 className='text-2xl text-gray-700 text-center animate-pulse'> Подождите идет загрзука...</h2>
+                    ? <h2 className='text-2xl text-gray-700 text-center animate-pulse'> Подождите идет загрузка (не уходите пожалуйста) ...</h2>
                     : <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
                         {
                             list.length ? list.map(el =>
