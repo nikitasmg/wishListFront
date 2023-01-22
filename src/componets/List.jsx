@@ -52,32 +52,37 @@ const List = () => {
             .finally(() => setLoading(false))
     }
     return (
-        <div className='max-w-[1230px] mx-auto pb-10 relative'>
-            <div className='min-h-screen px-3'>
-                <div className='flex items-center lg:px-10 pt-[50px] lg:pt-[100px] mb-4 flex-col-reverse lg:flex-row'>
-                    <h2 className='text-4xl leading-[1] lg:(text-[54px] leading-[64px]) font-bold text-neutral-800'>
-                        Дорогие друзья, приглашаю вас на свой День Рождения 15 января.
-                    </h2>
-                    <video autoPlay muted loop className="max-w-full lg:max-w-[540px] mb-10 lg:mb-0">
-                        <source src="/giftsVideo.mp4" type="video/mp4"/>
-                        Sorry, your browser doesn't support videos.
-                    </video>
+        <div className='max-w-[1230px] mx-auto pb-10 relative text-gray-800'>
+            <div className='px-3'>
+                <div className='flex items-center pt-[50px] lg:pt-[100px] mb-4 flex-col-reverse lg:flex-row'>
+                    <div className=''>
+                        <h2 className='animate-bounce my-2'>День рождения у Кочмана =)</h2>
+                        <h2 className='text-gray-700 text-4xl leading-[1.4] lg:(text-[54px] leading-[64px]) font-bold text-neutral-800'>
+                            Дорогие друзья, приглашаю вас на свой День рождения 18 февраля.
+                        </h2>
+                    </div>
+                    {/*<video autoPlay muted loop className="max-w-full lg:max-w-[540px] mb-10 lg:mb-0">*/}
+                    {/*    <source src="/giftsVideo.mp4" type="video/mp4"/>*/}
+                    {/*    Sorry, your browser doesn't support videos.*/}
+                    {/*</video>*/}
+                    <img className='w-1/4' src="/sticker2.webp" alt="photo"/>
                 </div>
-                <div className='flex gap-4 lg:gap-1 flex-col mb-10 text-2xl text-neutral-800 '>
-                    <span className='underline underline-offset-auto cursor-pointer'>
-                        Место проведения - <br className='lg:hidden'/><a target='_blank' href="https://2gis.ru/tyumen/geo/1830223003896305?m=65.523082%2C57.102848%2F16">г. Тюмень, ул. Уездная, 144</a></span>
-                    <span>Время проведения - <br className='lg:hidden'/> 16:00</span>
+
+                <div className='flex gap-4 lg:gap-1 flex-col mb-10 text-2xl text-gray-700 '>
+                    <span className='underline underline-offset-auto cursor-pointer hover:no-underline'>
+                        Место проведения - <br className='lg:hidden'/><a target='_blank' href="https://2gis.ru/tyumen/firm/70000001040419553?m=65.471489%2C57.116898%2F16">ресторан Дача, д. Дударева, Тюменская 9</a></span>
+                    <span>Время проведения - <br className='lg:hidden'/> 18:00</span>
                 </div>
-                <span className='block text-center mt-auto p-2 text-neutral-600 w-[200px] rounded-xl mx-auto'>Листай вниз <span>↓</span></span>
+
             </div>
 
 
-            <h2 className='text-2xl lg: text-4xl text-center mb-5'>А вот и сам Wish List {loading}</h2>
-            <span className='block mb-5 text-center text-red-600'>Важно! После нажатия кнопки "Беру себе", отменить выбор сможет только администратор. Если возникнут вопросы пишите <a
-                className='underline text-blue-500' href="https://vk.com/id12961608" target='_blank'>Евгению Смагину</a></span>
+            <h2 className='text-2xl lg: text-4xl text-center mb-5 text-gray-700'>А вот и он - Wish List {loading}</h2>
+            <span className='block mb-5 text-center text-red-300'>Важно! После нажатия кнопки "Беру себе", отменить выбор сможет только администратор. Если возникнут вопросы пишите <a
+                className='underline text-blue-500 hover:animate-pulse' href="https://vk.com/smg72" target='_blank'>Никите Смагину</a></span>
             {
                 loading
-                    ? <h2 className='text-2xl text-center animate-pulse'> Подождите идет загрзука...</h2>
+                    ? <h2 className='text-2xl text-gray-700 text-center animate-pulse'> Подождите идет загрзука...</h2>
                     : <div className='px-2 grid grid-cols-1 lg:grid-cols-3 gap-2 lg:gap-5'>
                         {
                             list.length ? list.map(el =>

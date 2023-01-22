@@ -39,6 +39,8 @@ const AdminPanel = () => {
             setItemId('')
         } catch (e) {
             console.error(e)
+            setError(e?.response.data.message)
+
         }
     }
 
@@ -48,14 +50,16 @@ const AdminPanel = () => {
         }
         catch (e) {
             console.error(e)
-            setError(e?.message)
+            setError(e?.response.data.message)
         }
     }
 
     const deleteGift = async () => {
       try {
         await axios.delete(`https://wishlistbacknest.onrender.com/gifts/${itemId}`)
+          setItemId('')
       } catch (e) {
+          setError(e?.response.data.message)
           console.error(e)
       }
     }
