@@ -6,7 +6,7 @@ const Present = ({item, handleAddReserve, loading}) => {
         if (!item.isReserved) {
             return <button
                         onClick={() => handleAddReserve(item.id)}
-                        className={`w-full border-2 py-2 px-5 rounded-md border-green-500 text-green-500 mt-auto hover:bg-green-500 hover:text-white ${loading && 'animate-bounce'}`}>
+                        className={`w-full border-2 py-2 px-5 rounded-md border-blue-500 text-blue-500 mt-auto hover:bg-blue-500 hover:text-white ${loading && 'animate-bounce'}`}>
                 {loading ? 'Подождите' : 'Беру себе'}
                     </button>
         } else {
@@ -23,7 +23,7 @@ const Present = ({item, handleAddReserve, loading}) => {
             <div className='flex flex-col px-5 pb-3 grow'>
                 <h2 className='text-2xl text-neutral-800 mb-4'> {item.name} </h2>
                 <p className='text-neutral-800 text-lg mb-3'>{item.description}</p>
-                {item.url && <a className='block text-xl text-green-300 underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
+                {item.url && <a className='block text-xl text-blue-400 underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
                 { buttonType() }
             </div>
         </div>
