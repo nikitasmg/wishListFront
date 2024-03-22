@@ -30,7 +30,7 @@ const AdminPanel = () => {
     }
 
     const getList = async () => {
-        axios.get('https://wishlistbacknest.onrender.com/gifts')
+        axios.get('127.0.0.1:3001/gifts')
             .then(({data}) => setList(data))
             .catch(e => console.error(e))
     }
@@ -42,7 +42,7 @@ const AdminPanel = () => {
             return
         }
         try {
-            await axios.put(`https://wishlistbacknest.onrender.com/gifts/${itemId}`, {isReserved: false})
+            await axios.put(`127.0.0.1:3001/gifts/${itemId}`, {isReserved: false})
             setItemId('')
         } catch (e) {
             console.error(e)
@@ -53,7 +53,7 @@ const AdminPanel = () => {
 
     const addItem = async (data) => {
         try {
-            await axios.post('https://wishlistbacknest.onrender.com/gifts', data)
+            await axios.post('127.0.0.1:3001/gifts', data)
         } catch (e) {
             console.error(e)
             setError(e?.response.data.message)
@@ -62,7 +62,7 @@ const AdminPanel = () => {
 
     const deleteGift = async () => {
         try {
-            await axios.delete(`https://wishlistbacknest.onrender.com/gifts/${itemId}`)
+            await axios.delete(`127.0.0.1:3001/gifts/${itemId}`)
             setItemId('')
         } catch (e) {
             setError(e?.response.data.message)

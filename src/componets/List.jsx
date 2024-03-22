@@ -23,7 +23,7 @@ const List = () => {
 
     const handleAddReserve = async (id) => {
         try {
-            await axios.put(`https://wishlistbacknest.onrender.com/gifts/${id}`, {isReserved: true})
+            await axios.put(`127.0.0.1:3001/gifts/${id}`, {isReserved: true})
             const newList = list.map(el => {
                 if (el.id === id) {
                     return {
@@ -46,7 +46,7 @@ const List = () => {
 
     const getList = async () => {
         setLoading(true)
-        axios.get('https://wishlistbacknest.onrender.com/gifts')
+        axios.get('127.0.0.1:3001/gifts')
             .then(({data}) => setList(data))
             .finally(() => setLoading(false))
     }
