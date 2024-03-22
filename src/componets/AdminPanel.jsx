@@ -29,12 +29,6 @@ const AdminPanel = () => {
         setDescription('')
     }
 
-    const getList = async () => {
-        axios.get('/gifts')
-            .then(({data}) => setList(data))
-            .catch(e => console.error(e))
-    }
-
     const handleCancelReserve = async (e) => {
         e.preventDefault()
         if (!itemId) {
@@ -71,8 +65,13 @@ const AdminPanel = () => {
     }
 
     useEffect(() => {
+        const getList = async () => {
+            axios.get('/gifts')
+                .then(({data}) => setList(data))
+                .catch(e => console.error(e))
+        }
         getList()
-    })
+    }, [])
     return (
         <div className='p-10'>
             <h2 className='text-2xl mb-5'>Добавить новый подарок</h2>
