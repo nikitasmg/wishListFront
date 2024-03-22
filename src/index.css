@@ -4,10 +4,9 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    background-color: #cdeef6;
-}
-
 * {
     font-family: 'Inter', sans-serif;
+}
+
+@layer utilities {
 }
