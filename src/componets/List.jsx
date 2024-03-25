@@ -77,7 +77,7 @@ const List = () => {
                     animate={{opacity: 1, scale: 1}}
                     transition={{duration: 1}}
                 >
-                    <img className="w-full h-full object-contain" src="/public/images/polina.jpg" alt="polina"/>
+                    <img className="w-full h-full object-contain" src="/images/polina.jpg" alt="polina"/>
                 </motion.div>
                 <motion.div
                     className="flex flex-col md:w-1/2 text-5xl md:text-8xl mb-10 md:mb-0 text-center font-bold text-pink-800 z-10"

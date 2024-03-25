@@ -23,7 +23,7 @@ const Present = ({item, handleAddReserve, loading}) => {
             {
                 item.imageUrl
                     ? <img className='w-full h-[300px] object-contain rounded-t-2xl mb-5' src={item.imageUrl} alt={item.name}/>
-                    : <img className='w-full h-[300px] object-contain rounded-t-2xl mb-5' src='/public/images/present.png' alt={item.name}/>
+                    : <img className='w-full h-[300px] object-contain rounded-t-2xl mb-5' src='/images/present.png' alt={item.name}/>
             }
             <div className='flex flex-col px-5 pb-3 grow text-neutral-700'>
                 <h2 className='text-2xl text-black mb-4 font-bold'> {item.name} </h2>
