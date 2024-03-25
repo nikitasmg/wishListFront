@@ -3,8 +3,6 @@ import axios from 'axios'
 import Present from './Present.jsx'
 import {motion} from 'framer-motion'
 
-const dressCode = ['#FFD1DC', '#FED6BC', '#FF9BAA', '#FFB28B', '#FFF0F5', '#FAE7B5']
-
 const List = () => {
     const [loading, setLoading] = useState(false)
     const [list, setList] = useState([{
@@ -71,7 +69,7 @@ const List = () => {
     }
 
     return (
-        <div className="max-w-[1230px] mx-auto px-4 py-10 relative">
+        <div className="max-w-[1230px] mx-auto px-4 pb-10 pt-4 md:pt-0 relative">
             <div className="flex flex-col-reverse md:flex-row md:h-screen mb-10 items-center relative">
                 <motion.div
                     className="md:h-full shrink-0 md:w-1/2 h-auto"
@@ -79,7 +77,7 @@ const List = () => {
                     animate={{opacity: 1, scale: 1}}
                     transition={{duration: 1}}
                 >
-                    <img className="w-full h-full object-contain" src="/public/images/polina_1.png" alt="polina"/>
+                    <img className="w-full h-full object-contain" src="/public/images/polina.jpg" alt="polina"/>
                 </motion.div>
                 <motion.div
                     className="flex flex-col md:w-1/2 text-5xl md:text-8xl mb-10 md:mb-0 text-center font-bold text-pink-800 z-10"
