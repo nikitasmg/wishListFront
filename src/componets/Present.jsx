@@ -19,12 +19,16 @@ const Present = ({item, handleAddReserve, loading}) => {
         }
     }
     return (
-        <div className='flex flex-col p-5 bg-pink-200 rounded-xl shadow-xl'>
-            <img className='w-full max-h-[200px] min-h-[200px] object-contain rounded-t-2xl mb-5' src={item.imageUrl} alt={item.name}/>
-            <div className='flex flex-col px-5 pb-3 grow'>
+        <div className='flex flex-col bg-rose-100 rounded-xl p-5 shadow-xl'>
+            {
+                item.imageUrl
+                    ? <img className='w-full h-[300px] object-contain rounded-t-2xl mb-5' src={item.imageUrl} alt={item.name}/>
+                    : <img className='w-full h-[300px] object-contain rounded-t-2xl mb-5' src='/public/images/present.png' alt={item.name}/>
+            }
+            <div className='flex flex-col px-5 pb-3 grow text-neutral-700'>
                 <h2 className='text-2xl text-black mb-4 font-bold'> {item.name} </h2>
                 <p className='text-neutral-700 text-lg mb-3'>{item.description}</p>
-                {item.url && <a className='block text-xl text-blue-400 underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
+                {item.url && <a className='block text-xl text-pink-700 underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
                 { buttonType() }
             </div>
         </div>
