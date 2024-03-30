@@ -2,26 +2,36 @@ import React, {useEffect, useState} from 'react'
 import axios from 'axios'
 import Present from './Present.jsx'
 import {motion} from 'framer-motion'
+import {ConfirmModal} from './ConfirmModal.jsx'
+
+const mock = [{
+    id: 1,
+    name: 'Платье Авроры',
+    isReserved: false,
+    description: 'Я люблю переодеваться поэтому хочу его',
+    imageUrl: 'https://ir.ozone.ru/s3/multimedia-2/wc1000/6725918702.jpg',
+    url: 'фывфывфыв'
+}, {
+    id: 2,
+    name: 12313,
+    isReserved: false,
+    description: 12312312,
+    imageUrl: 'https://ouch-cdn2.icons8.com/NRFHKI8ATxaz4UJ1Ozs212gPnTwnv9z2mBo8k5RvKec/rs:fit:760:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjE0/LzczMTNmNzE0LWQ0/YzEtNDczNi1hNjAz/LWVhMTcyOThjMDQz/YS5wbmc.png'
+}, {
+    id: 3,
+    name: 12313,
+    isReserved: false,
+    description: 12312312,
+    imageUrl: 'https://ouch-cdn2.icons8.com/NRFHKI8ATxaz4UJ1Ozs212gPnTwnv9z2mBo8k5RvKec/rs:fit:760:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjE0/LzczMTNmNzE0LWQ0/YzEtNDczNi1hNjAz/LWVhMTcyOThjMDQz/YS5wbmc.png'
+}]
 
 const List = () => {
     const [loading, setLoading] = useState(false)
-    const [list, setList] = useState([{
-        name: 'Платье Авроры',
-        isReserved: false,
-        description: 'Я люблю переодеваться поэтому хочу его',
-        imageUrl: 'https://ir.ozone.ru/s3/multimedia-2/wc1000/6725918702.jpg',
-        url: 'фывфывфыв'
-    }, {
-        name: 12313,
-        isReserved: false,
-        description: 12312312,
-        imageUrl: 'https://ouch-cdn2.icons8.com/NRFHKI8ATxaz4UJ1Ozs212gPnTwnv9z2mBo8k5RvKec/rs:fit:760:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjE0/LzczMTNmNzE0LWQ0/YzEtNDczNi1hNjAz/LWVhMTcyOThjMDQz/YS5wbmc.png'
-    }, {
-        name: 12313,
-        isReserved: false,
-        description: 12312312,
-        imageUrl: 'https://ouch-cdn2.icons8.com/NRFHKI8ATxaz4UJ1Ozs212gPnTwnv9z2mBo8k5RvKec/rs:fit:760:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjE0/LzczMTNmNzE0LWQ0/YzEtNDczNi1hNjAz/LWVhMTcyOThjMDQz/YS5wbmc.png'
-    }])
+    const [presentLoading, setPresentLoading] = useState(false)
+    const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
+    const [currenId, setCurrentId] = useState('')
+
+    const [list, setList] = useState([])
     const [notification, setNotification] = useState({
         error: false,
         message: ''
@@ -38,11 +48,23 @@ const List = () => {
     }
 
 
-    const handleAddReserve = async (id) => {
+    const handleOpenConfirm = (id) => {
+        setIsConfirmModalOpen(true)
+        setCurrentId(id)
+        console.log(id)
+    }
+
+    const handleCloseConfirm = () => {
+        setIsConfirmModalOpen(false)
+        setCurrentId('')
+    }
+
+    const handleAddReserve = async () => {
+        setPresentLoading(true)
         try {
-            await axios.put(`/gifts/${id}`, {isReserved: true})
+            await axios.put(`/gifts/${currenId}`, {isReserved: true})
             const newList = list.map(el => {
-                if (el.id === id) {
+                if (el.id === currenId) {
                     return {
                         ...el,
                         isReserved: true
@@ -55,8 +77,13 @@ const List = () => {
         } catch (e) {
             doNotification(e?.response.data.message, true)
             console.error(e)
+        } finally {
+            setCurrentId('')
+            setIsConfirmModalOpen(false)
+            setPresentLoading(false)
         }
     }
+
     useEffect(() => {
         getList().catch(e => console.error('ошибка при получении списка подароков', e))
     }, [])
@@ -157,6 +184,10 @@ const List = () => {
                 </div>
             </div>
 
+            <div className="text-neutral-700 text-4xl md:text-5xl font-body text-center mb-4">
+                А вот и сам список подарков
+            </div>
+
             {
                 loading
                     ? <div className="w-full flex justify-center">
@@ -165,7 +196,7 @@ const List = () => {
                     : <div className="px-2 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-[40px]">
                         {
                             list.length ? list.map(el =>
-                                    <Present key={el.id} item={el} handleAddReserve={handleAddReserve} loading={loading}/>
+                                    <Present key={el.id} item={el} handleAddReserve={handleOpenConfirm} loading={loading}/>
                                 )
                                 :
                                 <h2>Список пуст</h2>
@@ -179,6 +210,11 @@ const List = () => {
                     {notification.message}
                 </div>
             }
+            <div className="text-neutral-700 text-xl md:text-3xl font-body text-center mt-4">
+                PS: Если вы не нашли подарок который хотели подарить, вы всегда можете выбрать то, что вы захотели
+            </div>
+            <ConfirmModal isOpen={isConfirmModalOpen} onClose={handleCloseConfirm} callback={handleAddReserve}
+                          loading={presentLoading}/>
         </div>
 
     )
