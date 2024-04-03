@@ -119,7 +119,6 @@ const List = () => {
                     </div>
                     <div className="font-disney">Приглашаю вас на свой День Рождения!</div>
                 </motion.div>
-                {/*<img className='absolute right-0 h-full w-auto opacity-40' src="/public/images/sakura.png" alt="sakura"/>*/}
             </div>
             <div className="flex flex-col md:h-screen text-2xl md:text-5xl">
                 <div className="flex flex-col gap-4 mb-5">
@@ -129,7 +128,7 @@ const List = () => {
                 </div>
                 <div className="flex flex-col text-neutral-700 grow items-center mb-10 md:mb-0">
                     <div className="flex flex-col gap-3 mb-4 md:mb-[100px] items-center">
-                        <span className="font-body">29 апреля</span>
+                        <span className="font-body">28 апреля</span>
                         <span className="font-body">c 14:00 до 17:00</span>
                         <span className="font-body">студия Чики-Брики</span>
                         <a
