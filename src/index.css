@@ -5,6 +5,9 @@
 @tailwind utilities;
 
 @layer base {
+    a {
+       @apply text-pink-700 underline
+    }
     @font-face {
         font-family: 'Disney';
         src: url("/public/fonts/DisneyPark/DisneyPark.ttf");

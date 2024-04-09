@@ -4,7 +4,7 @@ import Present from './Present.jsx'
 import {motion} from 'framer-motion'
 import {ConfirmModal} from './ConfirmModal.jsx'
 
-const mock = [{
+export const mock = [{
     id: 1,
     name: 'Платье Авроры',
     isReserved: false,
@@ -19,9 +19,39 @@ const mock = [{
     imageUrl: 'https://ouch-cdn2.icons8.com/NRFHKI8ATxaz4UJ1Ozs212gPnTwnv9z2mBo8k5RvKec/rs:fit:760:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjE0/LzczMTNmNzE0LWQ0/YzEtNDczNi1hNjAz/LWVhMTcyOThjMDQz/YS5wbmc.png'
 }, {
     id: 3,
-    name: 12313,
+    name: 'ссыдка',
     isReserved: false,
-    description: 12312312,
+    description: `
+        <div>
+            <b>Ссылки на книги</b>
+        </div>
+        <ul>
+                    <li>
+            <a href="https://www.wildberries.ru/catalog/142837135/detail.aspx?targetUrl=MS&size=241347241">Однажды в Эренделе</a>
+        </li>
+         <li>
+             <a href="https://www.wildberries.ru/catalog/139305731/detail.aspx?targetUrl=MS&size=236509300">Новый друг </a>
+        </li>
+         <li>
+            <a href="https://www.wildberries.ru/catalog/61233806/detail.aspx?targetUrl=MS&size=108728143">Белоснежка</a>
+        </li>
+         <li>
+        <a href="https://www.wildberries.ru/catalog/17058990/detail.aspx?targetUrl=MS&size=47711426">Король Лев</a>
+            
+        </li>
+        <li>
+        <a href="https://www.wildberries.ru/catalog/116137279/detail.aspx?targetUrl=MS&size=207723831">Покахонтас</a>
+            
+        </li>
+        <li>
+        <a href="https://www.wildberries.ru/catalog/11074827/detail.aspx?targetUrl=MS&size=35346148">Спящая красавица</a>
+            
+        </li>
+</ul>
+        
+       
+        
+`,
     imageUrl: 'https://ouch-cdn2.icons8.com/NRFHKI8ATxaz4UJ1Ozs212gPnTwnv9z2mBo8k5RvKec/rs:fit:760:456/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvMjE0/LzczMTNmNzE0LWQ0/YzEtNDczNi1hNjAz/LWVhMTcyOThjMDQz/YS5wbmc.png'
 }]
 
@@ -31,7 +61,7 @@ const List = () => {
     const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false)
     const [currenId, setCurrentId] = useState('')
 
-    const [list, setList] = useState([])
+    const [list, setList] = useState(mock)
     const [notification, setNotification] = useState({
         error: false,
         message: ''
@@ -120,7 +150,7 @@ const List = () => {
                     <div className="font-disney">Приглашаю вас на свой День Рождения!</div>
                 </motion.div>
             </div>
-            <div className="flex flex-col md:h-screen text-2xl md:text-5xl">
+            <div className="flex flex-col text-2xl md:text-5xl mb-20">
                 <div className="flex flex-col gap-4 mb-5">
                     <div className="text-neutral-700 text-4xl md:text-6xl font-body text-center">
                         Я буду рада вас видеть
@@ -183,7 +213,7 @@ const List = () => {
                 </div>
             </div>
 
-            <div className="text-neutral-700 text-4xl md:text-5xl font-body text-center mb-4">
+            <div className="text-neutral-700 text-4xl md:text-5xl font-body text-center">
                 А вот и сам список подарков
             </div>
 

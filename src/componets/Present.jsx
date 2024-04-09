@@ -27,7 +27,7 @@ const Present = ({item, handleAddReserve, loading}) => {
             }
             <div className='flex flex-col px-5 pb-3 grow text-neutral-700'>
                 <h2 className='text-2xl text-black mb-4 font-bold'> {item.name} </h2>
-                <p className='text-neutral-700 text-lg mb-3'>{item.description}</p>
+                <p dangerouslySetInnerHTML={{__html: item.description}} className='text-neutral-700 text-lg mb-3'/>
                 {item.url && <a className='block text-xl text-pink-700 underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
                 { buttonType() }
             </div>

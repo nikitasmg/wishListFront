@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from 'axios'
+import {UiSelect} from '../UI/UiSelect/UiSelect.jsx'
+import {mock} from './List.jsx'
 
 const AdminPanel = () => {
 
@@ -44,7 +46,8 @@ const AdminPanel = () => {
         }
         try {
             await axios.put(`/gifts/${itemId}`, {isReserved: false})
-            getList().catch(() => {})
+            getList().catch(() => {
+            })
             setItemId('')
         } catch (e) {
             console.error(e)
@@ -73,57 +76,62 @@ const AdminPanel = () => {
     }
 
     useEffect(() => {
-        getList().catch(() => {})
+        getList().catch(() => {
+        })
     }, [])
 
     return (
-        <div className="p-10">
+        <div className="p-10 max-w-[1440px] mx-auto">
             <h2 className="text-2xl mb-5">Добавить новый подарок</h2>
             <form className="mb-10" onSubmit={(e) => handleSubmit(e)}>
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-2 lg:gap-4 mb-10">
+                <div className="grid grid-cols-1 gap-2 lg:gap-4 mb-10">
 
-                    <div className="flex flex-col gap-1">
+                    <label className="flex flex-col gap-1">
                         <span>Имя</span>
                         <input
-                            className="py-2 px-5 border-2 "
+                            className="py-2 px-5 border bg-gray-50 rounded-lg border-gray-300"
+                            placeholder="Название подарка"
                             value={name}
                             onChange={(e) => setName(e.target.value)}
                             type="text"
                         />
-                    </div>
+                    </label>
 
-                    <div className="flex flex-col gap-1">
+                    <label className="flex flex-col gap-1">
                         <span>Описание</span>
-                        <input
-                            className="py-2 px-5 border-2 "
+                        <textarea
+                            rows="4"
                             value={description}
                             onChange={(e) => setDescription(e.target.value)}
-                            type="text"
+                            className="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500"
+                            placeholder="Описание для подарка"
                         />
-                    </div>
+                    </label>
 
-                    <div className="flex flex-col gap-1">
+                    <label className="flex flex-col gap-1">
                         <span>Ссылка</span>
                         <input
-                            className="py-2 px-5 border-2 "
+                            className="py-2 px-5 border bg-gray-50 rounded-lg border-gray-300"
+                            placeholder="Ссылка на подарок"
                             value={url}
                             onChange={(e) => setUrl(e.target.value)}
                             type="text"
                         />
-                    </div>
+                    </label>
 
-                    <div className="flex flex-col gap-1">
+                    <label className="flex flex-col gap-1">
                         <span>Ссылка на картинку</span>
                         <input
-                            className="py-2 px-5 border-2 "
+                            className="py-2 px-5 border bg-gray-50 rounded-lg border-gray-300"
+                            placeholder="Ссылка на картинку"
                             value={imageUrl}
                             onChange={(e) => setImageUrl(e.target.value)}
                             type="text"
                         />
-                    </div>
+                    </label>
                 </div>
                 <button
-                    className="py-2 px-10 mx-auto border-2 border-green-700 text-green-700 hover:text-white hover:bg-green-700">Добавить
+                    className="py-2 px-10 mx-auto rounded border-2 border-green-700 text-green-700 hover:text-white hover:bg-green-700">Добавить
                     подарок
                 </button>
             </form>
@@ -131,19 +139,12 @@ const AdminPanel = () => {
             <form onSubmit={e => handleCancelReserve(e)}>
                 <div className="flex flex-col gap-2 mb-4">
                     <label htmlFor="city-select">Выберите подарок для удаления / отмены брони</label>
-                    <select className="max-w-[300px] h-[40px] p-2" name="city" id="city-select"
-                            onChange={(e) => setItemId(e.target.value)}>
-                        <option value="">-- Выберите подарок --</option>
-                        {!!list.length
-                            ? list.map(el => <option key={el.id} value={el.id}>{el.name}</option>)
-                            : <option value="null" disabled>Нет подарокв</option>
-                        }
-                    </select>
+                    <UiSelect className='w-full md:max-w-[400px]' data={list} handleChange={setItemId}/>
                 </div>
                 <div className="flex flex-col gap-2 max-w-[400px]">
-                    <button className="py-2 px-10 border-2 border-black">Убрать из брони</button>
+                    <button className="py-2 px-10 border-2 border-black rounded">Убрать из брони</button>
                     <button type="button" onClick={deleteGift}
-                            className="py-2 px-10 border-2 border-red-500 text-red-500">Удалить
+                            className="py-2 px-10 border-2 border-red-500 text-red-500 rounded">Удалить
                     </button>
                 </div>
             </form>
