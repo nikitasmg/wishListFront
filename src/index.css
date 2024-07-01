@@ -6,7 +6,7 @@
 
 @layer base {
     a {
-       @apply text-pink-700 underline
+       @apply text-primary underline
     }
     @font-face {
         font-family: 'Disney';

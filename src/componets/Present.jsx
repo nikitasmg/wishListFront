@@ -6,7 +6,7 @@ const Present = ({item, handleAddReserve, loading}) => {
         if (!item.isReserved) {
              return <button
                         onClick={() => handleAddReserve(item.id)}
-                        className={`w-full border-2 py-2 px-5 rounded-md font-semibold border-pink-600 text-pink-500 mt-auto hover:bg-pink-600 hover:text-white ${loading && 'animate-bounce'}`}>
+                        className={`w-full border-2 py-2 px-5 rounded-md font-semibold border-primary text-primary mt-auto hover:bg-primary50 hover:text-white ${loading && 'animate-bounce'}`}>
                 {loading ? 'Подождите' : 'Беру себе'}
                     </button>
 
@@ -19,7 +19,7 @@ const Present = ({item, handleAddReserve, loading}) => {
         }
     }
     return (
-        <div className='flex flex-col bg-rose-100 rounded-xl p-5 shadow-xl'>
+        <div className='flex flex-col bg-secondary50 rounded-xl p-5 shadow-xl'>
             {
                 item.imageUrl
                     ? <img className='w-full h-[300px] object-contain rounded-t-2xl mb-5' src={item.imageUrl} alt={item.name}/>
@@ -28,7 +28,7 @@ const Present = ({item, handleAddReserve, loading}) => {
             <div className='flex flex-col px-5 pb-3 grow text-neutral-700'>
                 <h2 className='text-2xl text-black mb-4 font-bold'> {item.name} </h2>
                 <p dangerouslySetInnerHTML={{__html: item.description}} className='text-neutral-700 text-lg mb-3'/>
-                {item.url && <a className='block text-xl text-pink-700 underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
+                {item.url && <a className='block text-xl text-primary underline hover:no-underline mb-3' href={item.url} target='_blank'>Ссылка на пример</a>}
                 { buttonType() }
             </div>
         </div>

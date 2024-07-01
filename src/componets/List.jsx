@@ -127,93 +127,93 @@ const List = () => {
 
     return (
         <div className="max-w-[1230px] mx-auto px-4 pb-10 pt-4 md:pt-0 relative">
-            <div className="flex flex-col-reverse md:flex-row md:h-screen mb-10 items-center relative">
+            <div className="flex flex-col-reverse gap-4 md:flex-row md:h-screen mb-10 items-center relative ">
                 <motion.div
-                    className="md:h-full shrink-0 md:w-1/2 h-auto"
+                    className="md:h-full shrink-0 md:w-1/2 h-auto rounded-xl"
                     initial={{opacity: 0, scale: 0.8}}
                     animate={{opacity: 1, scale: 1}}
                     transition={{duration: 1}}
                 >
-                    <img className="w-full h-full object-contain" src="/images/polina.jpg" alt="polina"/>
+                    <img className="w-full h-full object-contain rounded-xl" src="/images/Vika.webp" alt="photo"/>
                 </motion.div>
                 <motion.div
-                    className="flex flex-col md:w-1/2 text-5xl md:text-8xl mb-10 md:mb-0 text-center font-bold text-pink-800 z-10"
+                    className="flex flex-col md:w-1/2 text-3xl md:text-7xl mb-10 md:mb-0 text-center font-bold text-primary z-10"
                     initial={{opacity: 0, scale: 0.8}}
                     animate={{opacity: 1, scale: 1}}
                     transition={{duration: 1}}
                 >
                     <div className="mb-6 md:mb-[100px] flex flex-col">
                         <div className="text-xl">★★★★★★</div>
-                        <div className="mb-4 md:mb-10 font-disney"> Привет, друзья!</div>
+                        <div className="mb-4 md:mb-10"> Привет, друзья!</div>
                         <div className="text-xl">★★★★★★</div>
                     </div>
-                    <div className="font-disney">Приглашаю вас на свой День Рождения!</div>
+                    <div className="">Приглашаю вас на свой День Рождения!</div>
                 </motion.div>
             </div>
-            <div className="flex flex-col text-2xl md:text-5xl mb-20">
+            <div className="flex flex-col text-2xl md:text-5xl mb-10">
                 <div className="flex flex-col gap-4 mb-5">
                     <div className="text-neutral-700 text-4xl md:text-6xl font-body text-center">
                         Я буду рада вас видеть
                     </div>
                 </div>
-                <div className="flex flex-col text-neutral-700 grow items-center mb-10 md:mb-0">
+                <div className="flex flex-col text-neutral-700 grow items-center md:mb-0">
                     <div className="flex flex-col gap-3 mb-4 md:mb-[100px] items-center">
-                        <span className="font-body">28 апреля</span>
-                        <span className="font-body">c 14:00 до 17:00</span>
-                        <span className="font-body">студия Чики-Брики</span>
+                        <span className="font-body">14 июля</span>
+                        <span className="font-body">c 15:00 до 18:00</span>
+                        <span className="font-body">студия Пузырёк</span>
                         <a
-                            className="font-body text-pink-700 hover:text-pink-600 transition underline underline-offset-2"
-                            href="https://go.2gis.com/dvnun"
+                            className="font-body text-primary hover:underline transition no-underline underline-offset-4"
+                            href="https://go.2gis.com/llf4a"
                             target="_blank"
                         >
-                            Родниковая, 4 1 этаж
+                            Улица Сергея Джанбровского, 5
                         </a>
                     </div>
-                    <div className="font-body mb-10 text-center text-pink-600 md:w-1/2">На празднике будет фотограф,
-                        лучше выбирать одежду таких тонов
-                    </div>
-                    <div className="flex gap-4 flex-wrap">
-                        <motion.div className="w-[100px] h-[100px] bg-[#FFD1DC] rounded-xl border-2 border-pink-400"
-                                    initial={{opacity: 0, scale: 0.8}}
-                                    animate={{opacity: 1, scale: 1}}
-                                    transition={{duration: 0.2}}
-                                    viewport={{once: true}}
-                        />
-                        <motion.div className="w-[100px] h-[100px] bg-[#FED6BC] rounded-xl border-2 border-pink-400"
-                                    initial={{opacity: 0, scale: 0.8}}
-                                    whileInView={{opacity: 1, scale: 1}}
-                                    transition={{duration: 0.2, delay: 0.2}}
-                                    viewport={{once: true}}
-                        />
-                        <motion.div className="w-[100px] h-[100px] bg-[#FF9BAA] rounded-xl border-2 border-pink-400"
-                                    initial={{opacity: 0, scale: 0.8}}
-                                    whileInView={{opacity: 1, scale: 1}}
-                                    transition={{duration: 0.2, delay: 0.4}}
-                                    viewport={{once: true}}
-                        />
-                        <motion.div className="w-[100px] h-[100px] bg-[#FFB28B] rounded-xl border-2 border-pink-400"
-                                    initial={{opacity: 0, scale: 0.8}}
-                                    whileInView={{opacity: 1, scale: 1}}
-                                    transition={{duration: 0.2, delay: 0.6}}
-                                    viewport={{once: true}}
-                        />
-                        <motion.div className="w-[100px] h-[100px] bg-[#FFF0F5] rounded-xl border-2 border-pink-400"
-                                    initial={{opacity: 0, scale: 0.8}}
-                                    whileInView={{opacity: 1, scale: 1}}
-                                    transition={{duration: 0.2, delay: 0.8}}
-                                    viewport={{once: true}}
-                        />
-                        <motion.div className="w-[100px] h-[100px] bg-[#FAE7B5] rounded-xl border-2 border-pink-400"
-                                    initial={{opacity: 0, scale: 0.8}}
-                                    whileInView={{opacity: 1, scale: 1}}
-                                    transition={{duration: 0.2, delay: 1}}
-                                    viewport={{once: true}}
-                        />
-                    </div>
+                    {/*<div className="font-body mb-10 text-center text-primary md:w-1/2">На празднике будет фотограф,*/}
+                    {/*    лучше выбирать одежду таких тонов*/}
+                    {/*</div>*/}
+                    {/*<div className="flex gap-4 flex-wrap">*/}
+                    {/*    <motion.div className="w-[100px] h-[100px] bg-[#FFD1DC] rounded-xl border-2 border-primary"*/}
+                    {/*                initial={{opacity: 0, scale: 0.8}}*/}
+                    {/*                animate={{opacity: 1, scale: 1}}*/}
+                    {/*                transition={{duration: 0.2}}*/}
+                    {/*                viewport={{once: true}}*/}
+                    {/*    />*/}
+                    {/*    <motion.div className="w-[100px] h-[100px] bg-[#FED6BC] rounded-xl border-2 border-primary"*/}
+                    {/*                initial={{opacity: 0, scale: 0.8}}*/}
+                    {/*                whileInView={{opacity: 1, scale: 1}}*/}
+                    {/*                transition={{duration: 0.2, delay: 0.2}}*/}
+                    {/*                viewport={{once: true}}*/}
+                    {/*    />*/}
+                    {/*    <motion.div className="w-[100px] h-[100px] bg-[#FF9BAA] rounded-xl border-2 border-primary"*/}
+                    {/*                initial={{opacity: 0, scale: 0.8}}*/}
+                    {/*                whileInView={{opacity: 1, scale: 1}}*/}
+                    {/*                transition={{duration: 0.2, delay: 0.4}}*/}
+                    {/*                viewport={{once: true}}*/}
+                    {/*    />*/}
+                    {/*    <motion.div className="w-[100px] h-[100px] bg-[#FFB28B] rounded-xl border-2 border-primary"*/}
+                    {/*                initial={{opacity: 0, scale: 0.8}}*/}
+                    {/*                whileInView={{opacity: 1, scale: 1}}*/}
+                    {/*                transition={{duration: 0.2, delay: 0.6}}*/}
+                    {/*                viewport={{once: true}}*/}
+                    {/*    />*/}
+                    {/*    <motion.div className="w-[100px] h-[100px] bg-[#FFF0F5] rounded-xl border-2 border-primary"*/}
+                    {/*                initial={{opacity: 0, scale: 0.8}}*/}
+                    {/*                whileInView={{opacity: 1, scale: 1}}*/}
+                    {/*                transition={{duration: 0.2, delay: 0.8}}*/}
+                    {/*                viewport={{once: true}}*/}
+                    {/*    />*/}
+                    {/*    <motion.div className="w-[100px] h-[100px] bg-[#FAE7B5] rounded-xl border-2 border-primary"*/}
+                    {/*                initial={{opacity: 0, scale: 0.8}}*/}
+                    {/*                whileInView={{opacity: 1, scale: 1}}*/}
+                    {/*                transition={{duration: 0.2, delay: 1}}*/}
+                    {/*                viewport={{once: true}}*/}
+                    {/*    />*/}
+                    {/*</div>*/}
                 </div>
             </div>
 
-            <div className="text-neutral-700 text-4xl md:text-5xl font-body text-center">
+            <div className="text-neutral-700 text-4xl md:text-5xl font-body text-center mb-10">
                 А вот и сам список подарков
             </div>
 
