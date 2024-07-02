@@ -127,14 +127,14 @@ const List = () => {
 
     return (
         <div className="max-w-[1230px] mx-auto px-4 pb-10 pt-4 md:pt-0 relative">
-            <div className="flex flex-col-reverse gap-4 md:flex-row md:h-screen mb-10 items-center relative ">
+            <div className="flex flex-col-reverse gap-4 mb-10 md:flex-row items-center relative">
                 <motion.div
                     className="md:h-full shrink-0 md:w-1/2 h-auto rounded-xl"
                     initial={{opacity: 0, scale: 0.8}}
                     animate={{opacity: 1, scale: 1}}
                     transition={{duration: 1}}
                 >
-                    <img className="w-full h-full object-contain rounded-xl" src="/images/Vika.webp" alt="photo"/>
+                    <img className="w-full h-full object-contain rounded-xl" src="/images/vika.webp" alt="photo"/>
                 </motion.div>
                 <motion.div
                     className="flex flex-col md:w-1/2 text-3xl md:text-7xl mb-10 md:mb-0 text-center font-bold text-primary z-10"
@@ -143,11 +143,11 @@ const List = () => {
                     transition={{duration: 1}}
                 >
                     <div className="mb-6 md:mb-[100px] flex flex-col">
-                        <div className="text-xl">★★★★★★</div>
-                        <div className="mb-4 md:mb-10"> Привет, друзья!</div>
-                        <div className="text-xl">★★★★★★</div>
+                        <div className="text-2xl">★★★★★★</div>
+                        <div className="font-body md:mb-4"> Привет, друзья!</div>
+                        <div className="text-2xl">★★★★★★</div>
                     </div>
-                    <div className="">Приглашаю вас на свой День Рождения!</div>
+                    <div className="font-body">Приглашаю вас на свой День Рождения!</div>
                 </motion.div>
             </div>
             <div className="flex flex-col text-2xl md:text-5xl mb-10">
@@ -160,13 +160,13 @@ const List = () => {
                     <div className="flex flex-col gap-3 mb-4 md:mb-[100px] items-center">
                         <span className="font-body">14 июля</span>
                         <span className="font-body">c 15:00 до 18:00</span>
-                        <span className="font-body">студия Пузырёк</span>
+                        <span className="font-body">в игровой студии по адресу</span>
                         <a
                             className="font-body text-primary hover:underline transition no-underline underline-offset-4"
                             href="https://go.2gis.com/llf4a"
                             target="_blank"
                         >
-                            Улица Сергея Джанбровского, 5
+                            ул. Сергея Джанбровского, 5
                         </a>
                     </div>
                     {/*<div className="font-body mb-10 text-center text-primary md:w-1/2">На празднике будет фотограф,*/}

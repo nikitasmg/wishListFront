@@ -9,15 +9,10 @@ module.exports = {
         'disney': ['Disney'],
         'body': ['Allods']
       },
-      textColor: {
-        'primary': '#dfa955',
-        'primary50': '#efde7e',
-        'secondary': '#BFBDBDFF',
-      },
       colors: {
-        'primary': '#f59e0b',
-        'primary50': '#efde7e',
-        'secondary': '#dddddd',
+        'primary': '#9A1750',
+        'primary50': '#E3AFBC',
+        'secondary': '#E3E2DF',
         'secondary50': '#f1f1f1',
       }
     },
